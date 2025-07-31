@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: "react"
+        versions: ["19.x.x"]
+      - dependency-name: "react-dom"
+        versions: ["19.x.x"]
+      - dependency-name: "tailwindcss"
+        versions: ["4.x.x"]
