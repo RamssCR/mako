@@ -1,0 +1,37 @@
+[
+  {
+    "id": "intro",
+    "text": [
+      "Welcome, Human! I Am Mako, A Web Character",
+      "Do Not Ask Why I Answer With Every Word Capitalized",
+      "I Do Not Know, Nor Does My Creator"
+    ],
+    "mood": "happy",
+    "fallback": "Mako is happy",
+    "next": "question"
+  },
+  {
+    "id": "question",
+    "text": [
+      "Think Carefully Before Asking Me Anything",
+      "I Am Not A Regular Character",
+      "I Am A Web Character",
+      "...",
+      "That Does Not Make A Difference At All"
+    ],
+    "mood": "neutral",
+    "fallback": "Mako stares at you with a neutral expression",
+    "next": "goodbye"
+  },
+  {
+    "id": "goodbye",
+    "text": [
+      "Human, Our Time Together Is Over",
+      "Visit Again Whenever You Like",
+      "Just, Do Not Bring Weird [ass] Questions"
+    ],
+    "mood": "waving",
+    "fallback": "Mako waves goodbye",
+    "next": null
+  }
+]
