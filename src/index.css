@@ -1,1 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 @import "tailwindcss";
+
+:root {
+  /* Colors */
+  --color-background: oklch(17.84% 0.01396 243.841);
+  --color-background-contrast: oklch(27.808% 0.02963 256.871);
+  --color-background-accent: oklch(37.293% 0.03067 259.757);
+  --color-foreground: oklch(96.696% 0.00298 264.792);
+  --color-muted: oklch(30.456% 0.00232 248.245);
+  --color-muted-foreground: oklch(78.409% 0.01576 260.793);
+  --color-text: oklch(92.758% 0.00592 264.656);
+  --color-border: oklch(37.293% 0.03067 259.757);
+
+  /* Commons */
+  --color-light: oklch(96.696% 0.00298 264.792);
+  --color-dark: oklch(23.484% 0.02181 248.809);
+
+  /* Primary */
+  --color-primary: oklch(46.8% 0.24402 288.675);
+
+  /* Typography */
+  --font-base: "IBM Plex Sans", sans-serif;
+}
+
+@theme {
+  /* Colors */
+  --color-background: var(--color-background);
+  --color-background-contrast: var(--color-background-contrast);
+  --color-background-accent: var(--color-background-accent);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+
+  /* Commons */
+  --color-light: var(--color-light);
+  --color-dark: var(--color-dark);
+
+  /* Primary */
+  --color-primary: var(--color-primary);
+
+  /* Typography */
+  --font-base: var(--font-base);
+}
