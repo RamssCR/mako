@@ -9,7 +9,17 @@ import { useState } from 'react'
 export const useDialogues = (dialogues: Dialogue[]) => {
   const [currentId, setCurrentId] = useState<string | null>("intro")
   const [lineIndex, setLineIndex] = useState(0)
-  const node = dialogues.find(dialogue => dialogue.id === currentId)!
+  const node = dialogues.find(dialogue => dialogue.id === currentId)
+
+  if (!node) {
+    return {
+      currentLine: "",
+      mood: undefined,
+      fallback: "",
+      nextLine: () => { },
+      isEnd: true,
+    }
+  }
 
   /**
    * Advances to the next line of dialogue.
