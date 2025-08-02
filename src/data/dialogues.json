@@ -8,6 +8,19 @@
     ],
     "mood": "happy",
     "fallback": "Mako is happy",
+    "next": "instructions"
+  },
+  {
+    "id": "instructions",
+    "text": [
+      "Mako Tells Human To Press 'Z' Or Click The Dialogue Box",
+      "By Doing So, Human Can Ask Mako Anything, Unlike Weird [ass] Questions",
+      "Human Can Also Skip The Dialogues Animation By Pressing 'X'",
+      "Mako Encourages Human To Skip Dialogues",
+      "[Mako Does Not Get Paid Enough For Long [ass] Interactions]"
+    ],
+    "mood": "neutral",
+    "fallback": "Mako looks straight at you",
     "next": "question"
   },
   {
@@ -32,6 +45,18 @@
     ],
     "mood": "waving",
     "fallback": "Mako waves goodbye",
+    "next": "farewell"
+  },
+  {
+    "id": "farewell",
+    "text": [
+      "Oh...",
+      "In Case You Wonder Why I Use Brackets To Wrap Certain Words",
+      "I Do Know, Just Do Not Want To Tell",
+      "Farewell"
+    ],
+    "mood": "smiling",
+    "fallback": "Mako smiles at you",
     "next": null
   }
 ]
