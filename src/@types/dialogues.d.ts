@@ -7,6 +7,6 @@ export type Dialogue = {
   readonly text: string[]
   readonly mood?: string
   readonly fallback: string
-  readonly next?: string | null
+  readonly next: string | null
   readonly conditionalNext?: Record<string, string>
 }
