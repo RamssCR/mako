@@ -10,6 +10,12 @@ type ViewModule = { default: ComponentType<unknown> }
 
 const pages = import.meta.glob<ViewModule>('../views/*.tsx')
 
+/**
+ * Generates the route map for the application.
+ * This function dynamically imports view components and maps them to route paths.
+ * Each route corresponds to a view component, which is loaded lazily.
+ * @returns An array of route objects for the application.
+ */
 export const routeMap = (): RouteObject[] => {
   return Object.entries(pages).map(([path, resolver]) => {
     const name = path
