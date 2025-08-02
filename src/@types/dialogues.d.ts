@@ -5,7 +5,8 @@
 export type Dialogue = {
   readonly id: string
   readonly text: string[]
-  readonly mood: string
+  readonly mood?: string
   readonly fallback: string
-  readonly next: string | null
+  readonly next?: string | null
+  readonly conditionalNext?: Record<string, string>
 }
