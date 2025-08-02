@@ -1,8 +1,20 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export const useTypewriter = (text: string, speed = 30) => {
   const [displayed, setDisplayed] = useState("")
   const [isTyping, setIsTyping] = useState(true)
+  const [canPlaySound, setCanPlaySound] = useState(false);
+  const intervalRef = useRef<number | undefined>(undefined)
+
+  useEffect(() => {
+    const enableSound = () => setCanPlaySound(true);
+    window.addEventListener("pointerdown", enableSound, { once: true });
+    window.addEventListener("keydown", enableSound, { once: true });
+    return () => {
+      window.removeEventListener("pointerdown", enableSound);
+      window.removeEventListener("keydown", enableSound);
+    };
+  }, []);
 
   /**
    * Resets the typewriter effect.
@@ -15,35 +27,44 @@ export const useTypewriter = (text: string, speed = 30) => {
 
   useEffect(() => {
     let character = 0
+    let isCancelled = false
     const blip = new Audio('/audios/text-sound.wav')
     blip.volume = 0.2
     reset()
 
-    const interval = setInterval(() => {
-      if (character < text.length) {
-        setDisplayed((prev) => prev + text[character])
-        if (character % 2 === 0) {
-          try {
-            blip.currentTime = 0
-            blip.play()
-          } catch (error) {
-            console.error("Error playing sound:", error)
-          }
-        }
-        character++
-      } else {
+    intervalRef.current = window.setInterval(() => {
+      if (character >= text.length || isCancelled) {
         setIsTyping(false)
-        clearInterval(interval)
+        clearInterval(intervalRef.current)
+        return
+      }
+
+      const nextChar = text[character]
+      character++
+
+      setDisplayed((prev) => prev + nextChar)
+
+      if (character % 2 === 0 && canPlaySound) {
+        try {
+          blip.currentTime = 0
+          blip.play()
+        } catch (error) {
+          console.error("Error playing sound:", error)
+        }
       }
     }, speed)
 
-    return () => clearInterval(interval)
-  }, [text, speed])
+    return () => {
+      isCancelled = true
+      clearInterval(intervalRef.current)
+    }
+  }, [text, speed, canPlaySound])
 
   /**
    * Skips the typing effect and displays the full text immediately.
    */
   const skip = () => {
+    clearInterval(intervalRef.current)
     setDisplayed(text)
     setIsTyping(false)
   }
